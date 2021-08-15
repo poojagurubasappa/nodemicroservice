@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import Comment from "./Comment";
-import CommentList from "./CommentList";
+import Comment from './Comment';
+import CommentList from './CommentList';
 
 export default () => {
     const [ posts, setPosts ] = useState({});
     const getPosts = async () => {
-        const res = await axios.get('http://localhost:4002/posts');
+        const res = await axios.get('http://localhost:4002/posts'); //this is the query service
         console.log(res.data, 'RESSS')
         setPosts(res.data);
     }
