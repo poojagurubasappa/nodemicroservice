@@ -9,10 +9,14 @@ app.use(express.urlencoded({
 }));
 app.use(cors());
 
+const events = []; //simulating event data store
+
 
 app.post('/events', (req, res) => {
     console.log('Event-Bus Received an event');
     const event = req.body;
+
+    events.push(event);
 
     axios.post('http://localhost:4000/events', event).catch(e => console.log(e));
     axios.post('http://localhost:4001/events', event).catch(e => console.log(e));
@@ -20,6 +24,10 @@ app.post('/events', (req, res) => {
     axios.post('http://localhost:4003/events', event).catch(e => console.log(e));
 
     res.send({status: 200});
+});
+
+app.get('/events', (req, res) => {
+res.send(events || []);
 });
 
 app.listen(4005, () => {
