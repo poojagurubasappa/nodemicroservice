@@ -6,7 +6,7 @@ import CommentList from './CommentList';
 export default () => {
     const [ posts, setPosts ] = useState({});
     const getPosts = async () => {
-        const res = await axios.get('http://localhost:4002/posts'); //this is the query service
+        const res = await axios.get('http://posts.com/posts'); //this is the query service
         console.log(res.data, 'RESSS')
         setPosts(res.data);
     }
